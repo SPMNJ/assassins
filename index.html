@@ -33,25 +33,55 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script src="js/main.js"></script>
 	<script>document.getElementsByTagName("html")[0].className += " js";</script>
-  	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/style.css">
 	<!--===============================================================================================-->
 </head>
 
 <body>
 	<div class="limiter">
-		<div class="content-container" style="background-image: url('https://www.towson.edu/visit/images/tu-aerial-view-m.jpg');">
+		<div class="content-container"
+			style="background-image: url('https://www.towson.edu/visit/images/tu-aerial-view-m.jpg');">
 			<div class="wrap-content">
 				<div id="content">
 					<div id="content">
-						<div class="logo">
-							<img src="https://webapps.towson.edu/media/towsonu-logo-horiz-black2019.png" style="max-width: 100%;
+						<div class="logo" style="max-width: 200px;">
+							<img src="https://www.phikappapsi.com/wp-content/uploads/2018/03/Shield-400x400.png" style="max-width: 100%;
 							height: auto;" alt="">
 						</div>
 						<span class="title p-b-34 p-t-27">
-							Website
+							PHI PSI ASSASSINS
 						</span>
-						<div class="content-loading">
-							<img src="images/Rolling-1s-200px.svg" alt="" height="100px" width="100px">
+						<div id="info" class="" style="display: none">
+
+						</div>
+						<div class="wrap-input validate-input" data-validate="Enter Name">
+
+							<input id="searchbox" class="input" type="string" name="username"
+								placeholder="Enter Name" autocomplete="off"
+								maxlength="11">
+						</div>
+						<script type="text/javascript">
+							(function () {
+								function getCookie(name) {
+									var nameEQ = name + "=";
+									var ca = document.cookie.split(';');
+									for (const i of ca) {
+										var c = i;
+										while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+										if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+									}
+									return null;
+								}
+							})();
+						</script>
+						<div class="container-search-form-btn">
+							<button id="load" class="search-form-btn">
+								Login
+							</button>
+							<div id="load" class="btn-loading" style="display: none">
+								<img src="images/Rolling-blue.svg" alt="" height="40px" width="40px">
+							</div>
+
 						</div>
 					</div>
 				</div>
