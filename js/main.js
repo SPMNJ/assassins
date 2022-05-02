@@ -1,4 +1,4 @@
-var url = "https://script.google.com/macros/s/AKfycbxP_z-iFXLwFqzc94LPsz7DVpP-4LWUBUnH2VuYQW67Cbgpk_SRiu3mb7fPQ9MsegSb/exec";
+var url = "https://script.google.com/macros/s/AKfycbzMw1LYHcus0X2ThDsfynxOPuiJOJFrmqNGDOT3K5ufo4HhC7S2FUzn5ZuN2EPXJpyA/exec";
 (function ($) {
   "use strict";
   $.ajaxSetup({
@@ -15,14 +15,30 @@ var url = "https://script.google.com/macros/s/AKfycbxP_z-iFXLwFqzc94LPsz7DVpP-4L
   // Bind to the submit event of our form
   $(document).on('click', "#load", function (event) {
     event.preventDefault();
-    $('#info').hide();
-    $('#info').html("");
     $(".btn-loading").show();
     $(".search-form-btn").hide();
     var input = $("#searchbox").val();
     $.ajax({
       url: url + "?type=user&name=" + input,
     });
+
+    return false;
+  });
+
+  $(document).on('click', "#diebutton", function (event) {
+    event.preventDefault();
+    $(".btn-loading").show();
+    $(".search-form-btn").hide();
+    if (confirm("Did you actually die?")) {
+      var input = getCookie('id');
+      $.ajax({
+        url: url + "?type=died&id=" + input,
+      });
+    }
+    else {
+      $(".btn-loading").hide();
+      $(".search-form-btn").show();
+    }
 
     return false;
   });
@@ -62,7 +78,22 @@ function user(response) {
 
 function kill(response) {
   if (response.status == 200) {
-    $("#target").html(response.message);
+    if (response.message == "GAME OVER") {
+      $('#info').html("Game Over");
+      $(".btn-loading").hide();
+      $(".search-form-btn").hide();
+    }
+    else {
+      $('#target').html(response.message);
+    }
+  }
+}
+
+function died(response) {
+  if (response.status == 200) {
+    $('#info').html("Game Over");
+    $(".btn-loading").hide();
+      $(".search-form-btn").hide();
   }
 }
 
